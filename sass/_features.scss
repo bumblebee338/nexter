@@ -1,0 +1,47 @@
+.features{
+    grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+    
+    @supports(display: grid){
+        //For Inner Grid
+        display: grid;
+        //grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));     //to make responsive
+        grid-gap: 6rem;
+        align-items: start; //by default it is stretch
+    }
+
+    @media only screen and (max-width:$bp-small){
+        margin: 5rem 0;
+    }
+}
+
+.feature{
+
+    float: left;
+    width: 33.33333%;
+    margin-bottom: 6rem;
+
+    @supports(display: grid){
+        margin-bottom: 0;
+        width: auto;  
+    }
+
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon{
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; //here we cannot use -1 because (-1) works only in explicit grid but here we didn't define any rows
+        transform: translateY(-1rem);
+    }
+
+    &__text{
+        font-size: 1.7rem;
+    }
+}
